@@ -13,8 +13,17 @@ a {
 
 * {
   box-sizing: border-box;
+  background-color: #ACEDFF;
 }
 
 div {
   white-space: pre-wrap;
+}
+
+h1 {
+  color: #615D6C;
+}
+
+h2 {
+  color: #615D6C;
 }
