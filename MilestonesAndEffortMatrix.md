@@ -10,15 +10,15 @@
   Develop script to load data into website | 11/12 | 11/19
   Design page for showing data | 11/12 | 11/19
   Design landing page | 11/12 | 11/19
-  Create database  
-  Create script to farm price and benchmark data for models and insert into database  
-  Develop script to use database on website  
-  Refine page for showing models  
-  Design page for displaying specific model data  
-  Develop guide for building a PC  
-  Design page for displaying build guide  
-  Refine landing page with best deals  
-  Refine specific model page to show if there is a better price/performance  
+  Create database | 11/20 | 11/27
+  Create script to farm price and benchmark data for models and insert into database | 11/28 | 12/11
+  Develop script to use database on website | 12/12 | 12/18
+  Refine page for showing models | 01/02 | 01/15
+  Design page for displaying specific model data | 01/16 | 01/22
+  Develop guide for building a PC | 01/23 | 01/29
+  Design page for displaying build guide | 01/30 | 02/05
+  Refine landing page with best deals | 02/06 | 02/19
+  Refine specific model page to show if there is a better price/performance | 02/20 | 03/01
   
 # Effort Matrix
   Task | Josh Lenhart (%) | Josh Timmers (%)
