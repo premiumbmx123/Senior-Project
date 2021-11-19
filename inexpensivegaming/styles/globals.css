@@ -13,7 +13,6 @@ a {
 
 * {
   box-sizing: border-box;
-  background-color: #ACEDFF;
 }
 
 div {
@@ -25,5 +24,9 @@ h1 {
 }
 
 h2 {
+  color: #615D6C;
+}
+
+h3 {
   color: #615D6C;
 }
