@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 
+cluster = "mongodb+srv://seniorbois:Somethingsomethingdarkside123!!@cluster0.bpwqg.mongodb.net/SeniorDesign?retryWrites=true&w=majority"
 client = MongoClient(cluster)
 
 db = client.SeniorDesign
