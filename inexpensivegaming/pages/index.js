@@ -13,7 +13,7 @@ export default function Home() {
 
       <div className={styles.bar}>
         <Link href="/">
-          <a>
+          <a className={styles.container}>
             <h2>Inexpensive Gaming</h2>
           </a>
         </Link>

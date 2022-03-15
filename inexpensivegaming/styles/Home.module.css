@@ -72,6 +72,14 @@
   max-width: 800px;
 }
 
+.productGrid {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
 .card {
   margin: .5rem;
   padding: .5rem;
@@ -117,6 +125,7 @@
 .bar {
   flex-direction: column;
   align-items: flex-start;
+  padding: 0rem;
 }
 
 .bar h2 {
@@ -128,9 +137,28 @@
   margin: 0.5rem;
 }
 
+.homeLink {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 .links {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   background-color: #89BBFE;
+}
+
+.productName {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+
+.productContainer {
+  padding: 0 2rem;
+  max-width: 15rem;
 }
