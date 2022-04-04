@@ -84,7 +84,7 @@ export async function getServerSideProps() {
 
   const parts = await db
     .collection("graphicsCards")
-    .find()
+    .find({"manufacturer": "NVIDIA"})
     .toArray();
 
   return {

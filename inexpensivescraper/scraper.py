@@ -1,8 +1,12 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
+from dotenv import load_dotenv
 
-cluster = "mongodb+srv://seniorbois:Somethingsomethingdarkside123!!@cluster0.bpwqg.mongodb.net/SeniorDesign?retryWrites=true&w=majority"
+load_dotenv()
+
+cluster = os.environ.get("MONGODB_URI")
 client = MongoClient(cluster)
 
 db = client.SeniorDesign
@@ -39,7 +43,7 @@ for i in parts:
         "SKU": SKU[0].text,
         "clockSpeed": clockSpeed[0].text,
         "imageLink": imageLink[0]["src"],
-        "name": name[0]["data-name"],
+        "name": name[0].text,
         "pricing": price[0].text,
         "manufacturer": manufacturer[0].text
     }
@@ -60,19 +64,20 @@ soup = BeautifulSoup(page.content, "html.parser")
 parts = []
 
 for i in soup.select("div.detail_wrapper"):
-    print("NOT CARRIED" not in i.select("div.stock")[0].text)
-    if "NOT CARRIED" not in i.select("div.stock")[0].text:
-        parts.append("microcenter.com" + i.select("h2 > a[data-price]")[0]["href"])
+    parts.append("microcenter.com" + i.select("h2 > a[data-price]")[0]["href"])
 
 cpuData = {}
 
+x = 0
+
 for i in parts:
+    x += 1
+    print(x)
     page = requests.get("https://" + i)
 
     soup = BeautifulSoup(page.content, "html.parser")
     SKU = soup.select("dd.SKUNumber")
-    imageLink = soup.select(
-        "div.image-slide > a:nth-of-type(1) > img:nth-of-type(1)")
+    imageLink = soup.select("div.image-slide:nth-of-type(1) img")
     name = soup.select("span > span[data-category]")
     price = soup.select("span#pricing")
 
