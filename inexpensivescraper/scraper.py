@@ -30,7 +30,7 @@ for i in parts:
     page = requests.get("https://" + i)
 
     soup = BeautifulSoup(page.content, "html.parser")
-    SKU = soup.select("dd.SKUNumber")
+    modelNum = soup.select("dl > dd:nth-of-type(2)")
     clockSpeed = soup.select(
         "div.SpecTable > div:nth-of-type(11) > div:nth-of-type(2)")
     imageLink = soup.select(
@@ -40,7 +40,7 @@ for i in parts:
     manufacturer = soup.select("div:nth-of-type(7) > div:nth-of-type(2)")
 
     graphicsCardData = {
-        "SKU": SKU[0].text,
+        "modelNum": modelNum[0].text,
         "clockSpeed": clockSpeed[0].text,
         "imageLink": imageLink[0]["src"],
         "name": name[0].text,
@@ -72,17 +72,16 @@ x = 0
 
 for i in parts:
     x += 1
-    print(x)
     page = requests.get("https://" + i)
 
     soup = BeautifulSoup(page.content, "html.parser")
-    SKU = soup.select("dd.SKUNumber")
+    modelNum = soup.select("dl > dd:nth-of-type(2)")
     imageLink = soup.select("div.image-slide:nth-of-type(1) img")
     name = soup.select("span > span[data-category]")
     price = soup.select("span#pricing")
 
     cpuData = {
-        "SKU": SKU[0].text,
+        "modelNum": modelNum[0].text,
         "imageLink": imageLink[0]["src"],
         "name": name[0]["data-name"],
         "pricing": price[0].text,
