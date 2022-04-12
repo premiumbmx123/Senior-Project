@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../../styles/Home.module.css'
 import Link from 'next/link'
+import Head from 'next/head'
 
-export default function Home() {
+export default function parts() {
   return (
     <div>
       <Head>
@@ -12,13 +12,11 @@ export default function Home() {
       </Head>
 
       <div className={styles.bar}>
-        <div className={styles.homeLink}>
-          <Link href="/">
-            <a>
-              <h2>Inexpensive Gaming</h2>
-            </a>
-          </Link>
-        </div>
+        <Link href="/">
+          <a>
+            <h2>Inexpensive Gaming</h2>
+          </a>
+        </Link>
 
         <div className={styles.links}>
           <Link href="/parts">
@@ -40,11 +38,24 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      
+
       <main className={styles.main}>
-        <div className={styles.container}>
-          <h1>Best Deals</h1>
-          <h2>Coming Soon</h2>
+        <div>
+          <h2 className={styles.title}>What brand are you looking for?</h2>
+        </div>
+
+        <div className={styles.grid}>
+          <Link href="/parts/graphicscards/nvidia-graphics-cards">
+            <a className={styles.card}>
+              <h2>NVIDIA</h2>
+            </a>
+          </Link>
+
+          <Link href="/parts/graphicscards/amd-graphics-cards">
+            <a className={styles.card}>
+              <h2>AMD</h2>
+            </a>
+          </Link>
         </div>
       </main>
     </div>

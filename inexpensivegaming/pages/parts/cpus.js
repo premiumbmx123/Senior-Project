@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { connectToDatabase } from '../../util/mongodb'
 
-export default function graphicsCards({ parts }) {
+export default function cpus({ parts }) {
   return (
     <div>
       <Head>
@@ -50,7 +50,18 @@ export default function graphicsCards({ parts }) {
             <div className={styles.productContainer}>
               <Image src={cpu.imageLink} width={200} height={200} />
               <p className={styles.productName}>{cpu.name}</p>
+              <Link href={cpu.microcenterLink}>
+                <a>
+                  <h3>Microcenter</h3>
+                </a>
+              </Link>
               <p className={styles.productName}>{cpu.pricing}</p>
+              <Link href={cpu.neweggLink}>
+                <a>
+                  <h3>Newegg</h3>
+                </a>
+              </Link>
+              <p className={styles.productName}>{cpu.newegg}</p>
             </div>
           ))}
         </div>

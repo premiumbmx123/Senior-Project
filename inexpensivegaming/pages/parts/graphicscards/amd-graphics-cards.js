@@ -1,19 +1,10 @@
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
+import styles from '../../../styles/Home.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import { connectToDatabase } from '../../util/mongodb'
-import { useState } from 'react'
+import { connectToDatabase } from '../../../util/mongodb'
 
 export default function graphicsCards({ parts }) {
-  const [pageItem, setPageItem] = useState(parts)
-  const [buttons, setButtons] = useState([])
-
-  const filter = (button) =>{
-    const filteredData = parts.filter(part => part.manufacturer === button);
-    setPageItem(filteredData)
-  }
-  
   return (
     <div>
       <Head>
@@ -52,28 +43,30 @@ export default function graphicsCards({ parts }) {
         </div>
       </div>
 
-    <div className={styles.productsContainer}>
-      <div className={styles.filterBox}>
-        <h3>Filters</h3>
-        <h3>Manufacturer</h3>
-        <h2>box</h2>
-        <h2>box</h2>
-      </div>
-
-      <div className={styles.container}>
-        <h2>Graphics Cards</h2>
-        <div className={styles.productGrid}>
-          {parts.map((graphicscard) => (
-            <div className={styles.productContainer}>
-              <Image src={graphicscard.imageLink} width={200} height={200} />
-              <p className={styles.productName}>{graphicscard.name}</p>
-              <p className={styles.productName}>{graphicscard.pricing}</p>
-            </div>
-          ))}
+      <div className={styles.productsContainer}>
+        <div className={styles.container}>
+          <h2>Graphics Cards</h2>
+          <div className={styles.productGrid}>
+            {parts.map((graphicscard) => (
+              <div className={styles.productContainer}>
+                <Image src={graphicscard.imageLink} width={200} height={200} />
+                <p className={styles.productName}>{graphicscard.name}</p>
+                <Link href={graphicscard.microcenterLink}>
+                  <a>
+                    <h3>Microcenter</h3>
+                  </a>
+                </Link>
+                <p className={styles.productName}>{graphicscard.pricing}</p>
+                <Link href={graphicscard.neweggLink}>
+                  <a>
+                    <h3>Newegg</h3>
+                  </a>
+                </Link>
+                <p className={styles.productName}>{graphicscard.newegg}</p>
+              </div>
+            ))}
+          </div>
         </div>
-    </div>
-      
-
       </div>
     </div>
   )
@@ -84,7 +77,7 @@ export async function getServerSideProps() {
 
   const parts = await db
     .collection("graphicsCards")
-    .find({"manufacturer": "AMD"})
+    .find({ "manufacturer": "AMD" })
     .toArray();
 
   return {

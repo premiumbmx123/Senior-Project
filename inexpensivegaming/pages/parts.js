@@ -1,7 +1,6 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Head from 'next/head'
-import { Popover } from '@headlessui/react'
 
 export default function parts() {
   return (
@@ -46,24 +45,11 @@ export default function parts() {
         </div>
 
         <div className={styles.grid}>
-          <Popover>
-            <Popover.Button className={styles.card}>Graphics Cards</Popover.Button>
-
-            <Popover.Panel className={styles.panel}>
-                <Link href="/parts/nvidia-graphics-cards">
-                  <a >
-                    <h2>Nvidia</h2>
-                  </a>
-                </Link>
-                <Link href="/parts/amd-graphics-cards">
-                  <a >
-                    <h2>AMD</h2>
-                  </a>
-                </Link>
-                
-
-            </Popover.Panel>
-          </Popover>
+          <Link href="/parts/graphicscards/brandselection">
+            <a className={styles.card}>
+              <h2>Graphics Cards</h2>
+            </a>
+          </Link>
 
           <Link href="/parts/cpus">
             <a className={styles.card}>
