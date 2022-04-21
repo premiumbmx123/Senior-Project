@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
+import { connectToDatabase } from '../util/mongodb'
 
-export default function Home() {
+export default function Home({ parts }) {
   return (
     <div>
       <Head>
@@ -40,13 +42,49 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      
+
       <main className={styles.main}>
         <div className={styles.container}>
           <h1>Best Deals</h1>
-          <h2>Coming Soon</h2>
+          <div className={styles.productGrid}>
+            {parts.map((graphicscard) => (
+              <div className={styles.productContainer}>
+                <Image src={graphicscard.imageLink} width={200} height={200} />
+                <p className={styles.productName}>{graphicscard.name}</p>
+                <Link href={graphicscard.microcenterLink}>
+                  <a>
+                    <h3>Microcenter</h3>
+                  </a>
+                </Link>
+                <p className={styles.productName}>{graphicscard.pricing}</p>
+                <Link href={graphicscard.neweggLink}>
+                  <a>
+                    <h3>Newegg</h3>
+                  </a>
+                </Link>
+                <p className={styles.productName}>{graphicscard.newegg}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const { db } = await connectToDatabase();
+
+  const parts = await db
+    .collection("graphicsCards")
+    .find({})
+    .sort({ "savings": -1})
+    .limit(5)
+    .toArray();
+
+  return {
+    props: {
+      parts: JSON.parse(JSON.stringify(parts)),
+    },
+  };
 }

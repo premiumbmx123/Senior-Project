@@ -69,6 +69,12 @@ export default function parts() {
             </a>
           </Link>
 
+          <Link href="/parts/storage">
+            <a className={styles.card}>
+              <h2>Storage</h2>
+            </a>
+          </Link>
+
           <Link href="/parts/power-supplies">
             <a className={styles.card}>
               <h2>Power Supplies</h2>

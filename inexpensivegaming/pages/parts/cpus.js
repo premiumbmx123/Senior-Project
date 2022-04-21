@@ -43,30 +43,31 @@ export default function cpus({ parts }) {
         </div>
       </div>
 
-      <div className={styles.container}>
-        <h2>CPUs</h2>
-        <div className={styles.productGrid}>
-          {parts.map((cpu) => (
-            <div className={styles.productContainer}>
-              <Image src={cpu.imageLink} width={200} height={200} />
-              <p className={styles.productName}>{cpu.name}</p>
-              <Link href={cpu.microcenterLink}>
-                <a>
-                  <h3>Microcenter</h3>
-                </a>
-              </Link>
-              <p className={styles.productName}>{cpu.pricing}</p>
-              <Link href={cpu.neweggLink}>
-                <a>
-                  <h3>Newegg</h3>
-                </a>
-              </Link>
-              <p className={styles.productName}>{cpu.newegg}</p>
-            </div>
-          ))}
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <h2>CPUs</h2>
+          <div className={styles.productGrid}>
+            {parts.map((cpu) => (
+              <div className={styles.productContainer}>
+                <Image src={cpu.imageLink} width={200} height={200} />
+                <p className={styles.productName}>{cpu.name}</p>
+                <Link href={cpu.microcenterLink}>
+                  <a>
+                    <h3>Microcenter</h3>
+                  </a>
+                </Link>
+                <p className={styles.productName}>{cpu.pricing}</p>
+                <Link href={cpu.neweggLink}>
+                  <a>
+                    <h3>Newegg</h3>
+                  </a>
+                </Link>
+                <p className={styles.productName}>{cpu.newegg}</p>
+              </div>
+            ))}
+          </div>
         </div>
-
-      </div>
+      </main>
     </div>
   )
 }

@@ -43,31 +43,33 @@ export default function graphicsCards({ parts }) {
         </div>
       </div>
 
-      <div className={styles.productsContainer}>
-        <div className={styles.container}>
-          <h2>Graphics Cards</h2>
-          <div className={styles.productGrid}>
-            {parts.map((graphicscard) => (
-              <div className={styles.productContainer}>
-                <Image src={graphicscard.imageLink} width={200} height={200} />
-                <p className={styles.productName}>{graphicscard.name}</p>
-                <Link href={graphicscard.microcenterLink}>
-                  <a>
-                    <h3>Microcenter</h3>
-                  </a>
-                </Link>
-                <p className={styles.productName}>{graphicscard.pricing}</p>
-                <Link href={graphicscard.neweggLink}>
-                  <a>
-                    <h3>Newegg</h3>
-                  </a>
-                </Link>
-                <p className={styles.productName}>{graphicscard.newegg}</p>
-              </div>
-            ))}
+      <main className={styles.main}>
+        <div className={styles.productsContainer}>
+          <div className={styles.container}>
+            <h2>Graphics Cards</h2>
+            <div className={styles.productGrid}>
+              {parts.map((graphicscard) => (
+                <div className={styles.productContainer}>
+                  <Image src={graphicscard.imageLink} width={200} height={200} />
+                  <p className={styles.productName}>{graphicscard.name}</p>
+                  <Link href={graphicscard.microcenterLink}>
+                    <a>
+                      <h3>Microcenter</h3>
+                    </a>
+                  </Link>
+                  <p className={styles.productName}>{graphicscard.pricing}</p>
+                  <Link href={graphicscard.neweggLink}>
+                    <a>
+                      <h3>Newegg</h3>
+                    </a>
+                  </Link>
+                  <p className={styles.productName}>{graphicscard.newegg}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
