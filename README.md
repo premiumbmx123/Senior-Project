@@ -22,19 +22,19 @@ In order to accomplish this, many technologies will be combined. There will be a
 
 ## Level 0
 
-![Level 0 Diagram](DesignDiagrams/d0.png)
+![Level 0 Diagram](Documents/DesignDiagrams/d0.png)
 
 In our highest-level diagram, we show the most basic use of our website. Boxes with curved edges represent inputs and outputs. In this diagram the user is already on the website and selects a part to search for, which is the main functionality of the website. The arrow after this points to a square box which represents a task to be done. In this case, there is a task to query for all related part data. Then, as an output, the backend will send the data to the frontend and display the related parts and data.
 
 ## Level 1
 
-![Level 1 Diagram](DesignDiagrams/d1.png)
+![Level 1 Diagram](Documents/DesignDiagrams/d1.png)
 
 In the next level down with a little more detail, we see a little more of our project’s tasks. Here we show the user going to the website and then being faced with two options: go to the build guide or go to the part search as shown in the first diagram. If going to the build guide, the frontend will load a basic tutorial on building the PC after parts have been bought. This is then displayed on the website. If selecting the part search, we can see that the process is largely the same from the first diagram with the added step of navigating to the part search.
 
 ## Level 2
 
-![Level 2 Diagram](DesignDiagrams/d2.png)
+![Level 2 Diagram](Documents/DesignDiagrams/d2.png)
 
 In our lowest level diagram, many more details about the project are shown. The option to go the build guide is the same. The option to go to the part search has changed however as well as a new task that will be explained further down. Once the user has selected which part to search for, there is a task to query the database for the selected part data. The database is represented by a cylinder. In order to fill the database, a task is represented to run a job that will query sites for parts data. This will then be added to the database. With the database filled and the query finished on the database, the data will then be displayed on the site. The user is then able to select which model to find out more info about. The site will then display the related info being: prices from stores, benchmark scores, and the technical description of the specific model.
 
