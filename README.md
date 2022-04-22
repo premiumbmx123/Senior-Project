@@ -14,4 +14,4 @@
 
 ## 7.) [Assesments](Documents/Assessments/)
 
-## 8.) [Project Hours](https://github.com/KateMcManus/SeniorDesign/blob/master/Assignments%20Spring%202022/ProjectHours.md)
+## 8.) [Project Hours](Documents/SumOfHours.md)
