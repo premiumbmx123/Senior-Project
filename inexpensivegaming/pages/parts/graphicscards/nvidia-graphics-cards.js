@@ -52,6 +52,7 @@ export default function graphicsCards({ parts }) {
                 <div className={styles.productContainer}>
                   <Image src={graphicscard.imageLink} width={200} height={200} />
                   <p className={styles.productName}>{graphicscard.name}</p>
+                  <h3>Benchmark: {graphicscard.benchmark}</h3>
                   <Link href={graphicscard.microcenterLink}>
                     <a>
                       <h3>Microcenter</h3>

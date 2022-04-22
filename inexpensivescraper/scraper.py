@@ -42,6 +42,34 @@ for URL in steamURLs:
 
 '''
 
+URL = "https://www.videocardbenchmark.net/high_end_gpus.html"
+radeonBenchmarks = []
+geforceBenchmarks = []
+
+page = requests.get(URL)
+
+soup = BeautifulSoup(page.content, "html.parser")
+
+for i in soup.select("div#mark > div > div > ul.chartlist > li > a"):
+    page = requests.get("https://www.videocardbenchmark.net/" + i["href"])
+
+    soupBench = BeautifulSoup(page.content, "html.parser")
+
+    if "GeForce" in soupBench.select("span.cpuname")[0].text:
+        for j in soupBench.select("div > p"):
+            if "Rank" in j.text:
+                if "G3DMark" in j.text:
+                    geforceBenchmarks.append({"name": soupBench.select("span.cpuname")[0].text, "rank": j.text.split(":")[2].replace("\nLast Price Change", "").strip()})
+                else:
+                    geforceBenchmarks.append({"name": soupBench.select("span.cpuname")[0].text, "rank": j.text.split(":")[1].strip()})
+    else:
+        for j in soupBench.select("div > p"):
+            if "Rank" in j.text:
+                if "G3DMark" in j.text:
+                    radeonBenchmarks.append({"name": soupBench.select("span.cpuname")[0].text, "rank": j.text.split(":")[2].replace("\nLast Price Change", "").strip()})
+                else:
+                    radeonBenchmarks.append({"name": soupBench.select("span.cpuname")[0].text, "rank": j.text.split(":")[1].strip()})
+
 cluster = os.environ.get("MONGODB_URI")
 client = MongoClient(cluster)
 
@@ -88,6 +116,17 @@ for i in parts:
         name = soup.select("span > span[data-category]")
         price = soup.select("span#pricing")
         manufacturer = soup.select("div:nth-of-type(7) > div:nth-of-type(2)")
+        chip = soup.select("div.SpecTable > div:nth-of-type(9) > div:nth-of-type(2)")
+        benchmark = "N/A"
+
+        if "GeForce" in chip[0].text:
+            for j in geforceBenchmarks:
+                if chip[0].text.lower() == j["name"].lower():
+                    benchmark = j["rank"]
+        else:
+            for j in radeonBenchmarks:
+                if chip[0].text.lower() == j["name"].lower():
+                    benchmark = j["rank"]
 
         neweggPrice = "N/A"
         neweggLink = ""
@@ -134,11 +173,13 @@ for i in parts:
             "name": name[0].text,
             "pricing": price[0].text,
             "manufacturer": manufacturer[0].text,
+            "chip": chip[0].text,
             "newegg": neweggPrice,
             "microcenterLink": microcenterLink,
             "neweggLink": neweggLink,
             "minimum": "Meets 25/25 minimum settings!",
-            "savings": savings
+            "savings": savings,
+            "benchmark": benchmark
         }
 
         dataArray = []
