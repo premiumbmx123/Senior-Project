@@ -187,7 +187,7 @@ for i in parts:
 
         result = scrapeData.insert_one(graphicsCardData)
 
-'''
+
 scrapeData = db.cpus
 
 URLs = ["https://www.microcenter.com/search/search_results.aspx?Ntk=all&sortby=match&N=4294966995+4294819840&myStore=false", "https://www.microcenter.com/search/search_results.aspx?Ntk=all&sortby=match&N=4294966995+4294820689&myStore=false", ]
@@ -263,4 +263,3 @@ for i in parts:
         dataArray.append(cpuData)
 
         result = scrapeData.insert_one(cpuData)
-'''

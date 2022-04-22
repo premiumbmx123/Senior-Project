@@ -2,7 +2,7 @@
 
 ## 1.) [Project Description](Documents/ProjectDescription.md)
 
-## 2.) [UI Specification]()
+## 2.) [UI Specification](Documents/UserInterfaceSpec.md)
 
 ## 3.) [Test Plan and Results](Documents/Test%20Plan.pdf)
 
